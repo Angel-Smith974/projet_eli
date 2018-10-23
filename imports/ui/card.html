@@ -1,0 +1,49 @@
+<!-- Le premier code que j'ai mis pour le template card.
+    <template name = "card">
+    <li>{{nom}} {{prenom}} </li> //on retrouve le mot "nom" et "prenom" dans l'event
+    <button class="delete">&times;</button>
+</template>
+-->
+
+<!-- Le deuxieme code que j'ai mis pour le template card. On constate ainsi l'évolution du code.
+<template name = "card">
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{nom}} {{prenom}} </h5>
+        <p class="card-text"> {{description}} </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <button class="delete">&times;</button>
+    </div>
+</div>
+</template>
+-->
+
+
+<!--Voici le troisième code que j'ai fait. Ici mon template card contiens du code pour crée une carte.
+Ces carte sont dans un code qui va fair en sorte qu'il reste sur une grille (grid) qu'on peu retrouver 
+dans le body.html avec la div "row"-->
+
+<template name='card'>
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <span class="text"><strong>{{username}}</strong></span> <!--affichage du nom de l'utilisateur-->
+                       
+            <img class="card-img-top" src="{{image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{nom}} {{prenom}} </h5>
+                <p class="card-text"> {{description}} </p>
+                <a href="#" class="btn btn-primary">plus</a>
+                
+                <!--ici le boutton du modal, le modal en lui meme se trouve dans le body.html-->
+                <button type="button" class="btn-edit btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    data-id={{_id}}>
+                    <!--juste au dessus, la class btn btn-primary a était modifier avec un btn-edit ajouter pour permettre a l'event de s'executer uniquement sur lui. car la class btn btn-primary est la meme pour tout boutton bootstrap-->
+                    Modifier
+                </button>
+                <button class="delete btn-danger">&times;supprimer</button>
+            </div>
+        </div>
+    </div>
+
+</template>

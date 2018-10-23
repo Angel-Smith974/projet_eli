@@ -1,0 +1,111 @@
+<body> <!--alt+z = retour a la ligne automatique-->
+
+    <header>
+        {{> jumbo}}
+        {{> nav}}
+
+        {{> loginButtons}}
+
+        {{#if currentUser}}
+        <!--Ce code avec 'if' donne l'acces uniquement si l'utilisateur est identifier-->
+        <div class="container">
+            <form class="ajouter">
+                <!--ajouter est le nom que j'ai choisie pour cette class, cela nous permet de l'appeler dans l'event-->
+                <input type="text" name="nomInput" placeholder="ajouter un nom" />
+                <!--Ici le mot "text" fait parti de la syntaxe de base. Ici le mot 'nomInput' que j'ai choisie fait référence au 'nomInput' que j'ai choisie aussi dans l'event.-->
+
+                <input type='text' name='prenomInput' placeholder='ajouter un prenom' />
+                <!-- le mot "text" qui defini le type permet au nagateur de comprendre que l'input est de type texte et qu'il faut donc le traité comme tel.-->
+
+                <input type='text' name='descriptionInput' placeholder='ajouter une description'/>
+
+                <input type='text' name='imageInput' placeholder="lien d'une image" />
+
+                <button type='submit'>Ajouter</button>
+                <!--Ici "submit" définie le type de boutton utilisé. Le navigateur comprend alors qu'il faut prendr en compte tout se qu'il y a au dessus pour le soumettre. -->
+            </form>
+        </div>
+        {{/if}}
+    </header>
+
+    <div class="container">
+        <div class="row">
+            {{> persodur}}
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+
+            {{#each liste}}
+            <!--liste est un nom choisie par soit meme. Tu met le nom que tu veux du moment que c'est le meme que celui du helper, va regarder. -->
+            {{> card}}
+            <!--card c'est le nom de la template-->
+            {{/each}}
+
+        </div>
+    </div>
+
+
+
+    <!--Ici le modal, le boutton qui appel le modal est situé dans le fichier modal.html
+Première ecriture du modal
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                exemple
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="editer">
+                        <input type='text' id='edit-NomInput' name='editNomInput' placeholder=' {{nom}} ' />
+                        <input type='text' id='edit-PrenomInput' name='editPrenomInput' placeholder=' {{prenom}} ' />
+                        <input type='text' id='edit-DescriptionInput' name='editDescriptionInput' placeholder=' {{description}} ' />
+                        <input type='text' id='edit-ImageInput' name='editImageInput' placeholder=' {{image}} ' />
+                        <input type="hidden" id="edit-id" name="editId" />
+                        <button type="submit" id='btn-sauver' class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <footer>
+        {{> foot}}
+    </footer>
+
+</body>
